@@ -35,7 +35,7 @@ embedding_model = HuggingFaceEmbeddings(
 vectorstore = Chroma.from_documents(
     documents=chunks,
     embedding=embedding_model,
-    persist_directory="./pdf_rag_db"
+    persist_directory="./pdf_rag_db2"
 )
 
 retriever = vectorstore.as_retriever(
