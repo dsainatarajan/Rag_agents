@@ -11,12 +11,14 @@ Extends Ex2_rag_openai.py to demonstrate two retrieval strategies side by side:
 Same PDF, chunking, embedding model, and local vLLM endpoint as Ex2 so results are comparable.
 """
 
+# pip install -U langchain-classic rank_bm25
+
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.retrievers import BM25Retriever
-from langchain.retrievers import EnsembleRetriever
+from langchain_classic.retrievers import EnsembleRetriever
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 

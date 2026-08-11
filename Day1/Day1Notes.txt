@@ -1,0 +1,69 @@
+Day1:
+Trainer: D Sai Natarajan, 16 Yrs Exp
+
+Exp, Python, GenAIBasics, PromptEngineering, Langchain, LLM Projects
+Specialt Expectations:
+
+Exp: 16 Yrs, Python:12Yrs, GenAIBasics: 5Yrs, RAG, Agents, PromptEngineering: Advanced, Langchain: 4Yrs, LLM Projects: 5 Projects
+Specialt Expectations: 
+Gardrailing and securing our systemfor promptenjction and evaluating our ai system
+
+Context Window:
+32k tokens  -> 7B 
+1T+	  -> 256k to 1Million Tokens
+
+GPT 5		=> INput-> 256k, output -> 128k 
+
+
+nano -> 7b to 100B
+small -> 100B to 500B
+medium -> 500B to 1T
+>1T  -> Large
+
+Words -> Tokens  -> Embeddings => LLM
+
+teacher		-> teach + er
+Open, Opened, Opening -> Open + ing, ed
+Open	-> 1 Token
+opening -> Open + ing -> 2 tokens
+
+1 word  = 1 or more tokens
+100 words		=> 140 to 150 tokens
+
+256k tokens		-> 160k words
+
+
+Embeddings   -> word is represented as 10x10 array of number   => vector
+
+
+Good		-> +3
+Bad			-> -3
+Pleasant	-> +3.04
+	
+
+King		-> Ruler+ country+ Male
+Queen		-> Ruler+ country+ FeMale
+
+King - Male + Female =>  Queen
+
+
+Embedding model -> Deeplearning model
+
+student, book		-> nearby
+student, fox		-> far away
+fox, lion			-> nearby
+cat, fox			-> far away
+
+
+
+ChunkSize:
+	1. Relevance of data within the chunk should be homogenous
+	2. Multiple chunks together should fit within the context of the model
+		USerQuery + k*ChunkSize <= ContextWindow Size
+	
+Break from 4 PM to 4.20 PM!	
+
+
+
+
+
