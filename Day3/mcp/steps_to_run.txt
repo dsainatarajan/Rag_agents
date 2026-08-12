@@ -1,0 +1,13 @@
+conda create -n mcpdemo python=3.12 -y
+conda activate mcpdemo
+pip install langchain langchain-core langchain_community langchain-openai  langchain-text-splitters scikit-learn bs4 pandas pyarrow matplotlib lxml langgraph "mcp[cli]"
+python data_creator.py
+# Launch the mcp server
+python langgraph-mcp.py
+
+
+# Launch another terminal
+cd mcp
+python mcp_client.py
+python mcp_client_safer.py
+

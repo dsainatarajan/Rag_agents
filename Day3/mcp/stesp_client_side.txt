@@ -1,0 +1,46 @@
+# Continue on the same anacond terminal
+python mcp_client.py
+python mcp_client_safer.py
+
+Settings for MCP to add to other applications:
+{
+    "mcpServers": {
+        "langgraph-mcp": {
+            "command": "C:\\Users\\Admin\\anaconda3\\envs\\mcpdemo\\python.exe",
+            "args": [
+                "D:\\AgenticAI_Advanced\\Day4\\1MCP_Demo\\langgraph-mcp.py"
+            ],
+            "env": {
+                "OPENAI_API_KEY": "<your-openai-api-key>"
+            }
+        }
+    }
+}
+
+Example:
+cursor -> ~/.cursor/mcp.json
+# Example location: C:\Users\USER_NAME\.cursor
+# Create a new file named mcp.json, add below contents, update the path as needed
+{
+    "mcpServers": {
+        "langgraph-mcp": {
+            "command": "C:\\Users\\Admin\\anaconda3\\envs\\mcpdemo\\python.exe",
+            "args": [
+                "D:\\AgenticAI_Advanced\\Day4\\1MCP_Demo\\langgraph-mcp.py"
+            ],
+            "env": {
+                "OPENAI_API_KEY": "<your-openai-api-key>"
+            }
+        }
+    }
+}
+
+# Launch Cursor 
+Settings -> Tools & MCP
+	The above MCP tools should be listed
+
+Open Cursor Chat ->
+invoke the demo_query_tool tool and show me the result
+# Allow the invocation of the tool from the MCP server, click Run
+# Response: demo tool
+
