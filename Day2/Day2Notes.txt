@@ -1,0 +1,13 @@
+Day2:
+
+
+1. Query rewriting   -> Suitable for retrieval
+2. HyDE   
+3. Re-ranking  
+4. Contextual compression
+
+Break from 3.46 PM IST to 4.06 PM IST!
+
+
+
+

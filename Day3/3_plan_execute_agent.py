@@ -36,8 +36,8 @@ from langgraph.graph import StateGraph, END
 # ---------------------------------------------------------------------------
 # Local vLLM endpoint (OpenAI-compatible /v1) - same pattern as earlier exercises
 # ---------------------------------------------------------------------------
-LOCAL_BASE_URL = "http://192.168.51.100:8000/v1"
-LOCAL_MODEL    = "openai/gpt-oss-120b"
+LOCAL_BASE_URL = "http://192.168.51.102:8002/v1"
+LOCAL_MODEL    = "gemma4-26b"    # must match `curl .../v1/models`
 LOCAL_API_KEY  = "not-needed"
 
 llm = ChatOpenAI(
