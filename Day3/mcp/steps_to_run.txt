@@ -9,6 +9,8 @@ python langgraph-mcp.py
 
 # Launch another terminal
 cd mcp
+conda activate mcpdemo
+
 python mcp_client.py
 python mcp_client_safer.py
 
