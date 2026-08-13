@@ -1,6 +1,7 @@
 import os
 
-from mcp.server.fastmcp import FastMCP
+#from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from langchain_huggingface import HuggingFaceEmbeddings          # LOCAL embeddings (was OpenAIEmbeddings)
 from langchain_community.vectorstores import SKLearnVectorStore
 
@@ -19,7 +20,7 @@ def get_embeddings():
 
 
 # Create an MCP server
-mcp = FastMCP("LangGraph-Docs-MCP-Server")
+mcp = MCPServer("LangGraph-Docs-MCP-Server")
 
 
 @mcp.tool()

@@ -1,0 +1,139 @@
+Day3:
+Langchain:
+	1. Prompt Template, LLM
+	2. Parser  -> Chunking(Parser), Pydantic
+	3. RAG
+	4. Memory
+	5. Langgraph	=> Agents
+	6. Langsmith	=>Monitoring
+Multi-Agent Systems & LangGraph  
+• Supervisor pattern, shared state, stateful graphs, inter-agent communication 
+Lab: Multi-Agent Pipeline  
+• 3-agent LangGraph system: Planner → Coder → Reviewer with shared state & memory
+
+Model Context Protocol (MCP)  
+• MCP architecture  
+• Servers vs clients  
+• Tool/resource exposure 
+• Copilot + MCP 
+• Lab: Custom MCP Server  
+o Build an MCP server wrapping an internal API  
+o Connect to Copilot Chat  
+o Invoke from agent 
+Evaluation & Observability  
+• RAGAS metrics,  
+• LLM-as-judge,  
+• LangFuse tracing,  
+ 
+• cost & latency dashboards 
+Lab: Eval + Tracing  
+• Run RAGAS on Day 1 pipeline  
+• Instrument Day 2 agent with LangSmith  
+• View full trace 
+
+
+
+Langgraph	-> Building Workflows
+
+Langchain:
+	agent = create_agent(llm, tools[planning, coder, validation])
+
+class PlanExecuteState(TypedDict):
+    plan: str
+    code: str
+    valid: bool
+    status: str
+	
+def planner(state: StateGraph):
+	state.update({"plan": "my plan"})
+	return state
+
+def coder(state: StateGraph):
+	code = llm.invoke(state.plan + "Write the code for above plan")
+	state.update({"code": code})
+	return state
+	
+def validation(state: StateGraph):
+	try:
+		exec(state.code)
+		state.update({"valid": True})
+		return state
+	exception:
+		state.update({"valid": False})
+		return state
+
+def logical_check_llm(state: StateGraph):
+	status = llm.invoke(state.code + """ Check the code for logical correctness if the code is logically correct, then write done \
+				else if the code is logically wrong, then wrtie fix""")
+	state.update({"status": status})
+	return state
+
+def ValidationSuccess(state: StateGraph):
+	if codeValid == True:
+		return "logical_check_llm"
+	else:
+		return "coder_node"
+
+
+def LogicalValidationSuccess(state: StateGraph):
+	if state.status == done:
+		return END
+	else:
+		return "coder_node"
+
+builder = GraphBuilder()
+
+builder.addNode(planner, "planer_node")
+builder.addNode(coder, "coder_node")
+builder.addNode(validation, "validation_node")
+
+builder.addEdge(START, "planer_node")
+builder.addEdge("planer_node", "coder_node")
+builder.addEdge("coder_node", "validation_node")
+builder.conditional_edge("validation_node", ValidationSuccess)
+graph.compile()
+
+graph.invoke("Human Prompt")
+
+
+
+
+Prompt:
+write an sql query to get employee name with id 100
+
+Model response:
+You are asking for an sql query, I will give a query that is compatible with mysql
+
+``` SQL
+
+select name from employee where id = 100
+```
+
+The above query can be executed on a sql terminal
+
+
+
+sql_qry=llm.invoke("write an sql query to get employee name with id 100")
+sql_session.exec_query(sql_qry)		-> Error
+
+from pydantic import BaseModel, Field
+
+class SQLQry(BaseModel):
+	description = Field("The description about the query")
+	sql_qry = Field("SQL Query answer for the user question")
+
+prompt = "write an sql query to get employee name with id 100"
+
+result = prompt | llm.structured_output(SQLQry)
+
+print("Description:" result.description)
+
+sql_session.exec_query(result.sql_qry)
+
+
+
+Break From 4.10 PM IST to 4.30 PM IST!
+
+
+
+
